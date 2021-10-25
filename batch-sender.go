@@ -71,18 +71,18 @@ func main() {
 		}
 		tx, err := contract.Send(transactor, addresses, tokenAddr, coinAmount, tokenAmount)
 		if err != nil {
-			log.Fatalf("batch #d send error: %v", i, err)
+			log.Fatalf("batch %d send error: %v", i, err)
 		}
 
 		time.Sleep(20 * time.Second)
 		receipt, err := client.TransactionReceipt(context.Background(), tx.Hash())
 		if err != nil {
-			log.Fatalf("batch #d send query receipt error: %v", i, err)
+			log.Fatalf("batch %d send query receipt error: %v", i, err)
 		}
 
-		if receipt.Status != 0 {
-			log.Fatalf("batch #d send receipt failure: %s", i, tx.Hash().Hex())
+		if receipt.Status != 1 {
+			log.Fatalf("batch %d send receipt failure: %s", i, tx.Hash().Hex())
 		}
-		log.Printf("batch #d transaction hash: %s\n", i, tx.Hash().Hex())
+		log.Printf("batch %d transaction hash: %s\n", i, tx.Hash().Hex())
 	}
 }
