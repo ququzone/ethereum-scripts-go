@@ -34,6 +34,8 @@ func main() {
 		log.Fatalf("create esdsa private key from key bytes error: %v", err)
 	}
 	transactor, err := bind.NewKeyedTransactorWithChainID(key, big.NewInt(4689))
+	totalAmount, _ := new(big.Int).SetString("10000000000000000000", 10)
+	transactor.Value = totalAmount
 	if err != nil {
 		log.Fatalf("create keyed transactor error: %v", err)
 	}
