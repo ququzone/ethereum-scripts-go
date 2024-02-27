@@ -16,12 +16,12 @@ import (
 
 func main() {
 	tx := types.NewTransaction(
-		0,
-		common.HexToAddress("0x173553c179bbf5af39D8Db41F0B60e4Fc631066a"),
-		big.NewInt(100),
-		10000,
-		big.NewInt(1000000000000),
-		[]byte{},
+		0, // nonce
+		common.HexToAddress("0x173553c179bbf5af39D8Db41F0B60e4Fc631066a"), // to
+		big.NewInt(100),           // amount
+		10000,                     // gaslimit
+		big.NewInt(1000000000000), // gasprice
+		[]byte{},                  //data
 	)
 
 	keyBytes, err := hex.DecodeString(env.GetNonEmpty("PRIVATE_KEY"))
